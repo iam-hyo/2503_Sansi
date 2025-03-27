@@ -15,7 +15,7 @@ def extract_reviews(driver, restaurant_name):
         for i in range(10):
             driver.execute_script('arguments[0].scrollTop = arguments[0].scrollHeight', scroll_div)
             print(f"🔽 스크롤 {i+1}회 완료")
-            time.sleep(2)
+            time.sleep(1)
     except:
         print("⚠️ 스크롤 요소를 찾을 수 없음")
 
@@ -95,5 +95,5 @@ for idx, place in enumerate(places[:10]):
 # 8️⃣ WebDriver 종료
 driver.quit()
 
-# 9️⃣ 리뷰 데이터 Excel 파일로 저장
+# 9️⃣ 리뷰 데이터 Excel 파일로 저장 
 save_reviews_to_excel(review_data, search_query)
