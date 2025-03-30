@@ -6,6 +6,9 @@ def recommend_restaurants(csv_path, user_weights, top_n=5):
     # CSV 파일 로드 (매개변수로 받은 경로 사용)
     df = pd.read_csv(csv_path)
     
+    # NaN 값은 0으로 대체
+    df = df.fillna(0)
+    
     # 식당별 점수 계산
     df["총점"] = df.drop(columns=["가게명"]).apply(lambda row: sum(row[tag] * user_weights.get(tag, 0) for tag in user_weights), axis=1)
     
